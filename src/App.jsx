@@ -11,7 +11,7 @@ import ForgotPassword from "./Login/ForgotPassword";
 
 import Home from "./pages/Home";
 import PlantDetail from "./pages/PlantDetail";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import Favorites from "./pages/Favorites";
 import ExplorePage from "./pages/Explore";
 import Notes from "./pages/Notes";
