@@ -1,5 +1,5 @@
 import AdminSidebar from "../Components/AdminsideBar";
-import AdminNavbar from "../components/AdminNavbar";
+import AdminNavbar from "../Components/Adminnavbar";
 import { Outlet } from "react-router-dom";
 import forestBg from "../../assets/bgimage.png";
 
