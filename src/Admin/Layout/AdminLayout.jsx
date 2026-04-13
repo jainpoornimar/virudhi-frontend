@@ -1,4 +1,4 @@
-import AdminSidebar from "../Components/AdminsideBar";
+import AdminSidebar from "../Components/AdminSidebar";
 import AdminNavbar from "../Components/Adminnavbar";
 import { Outlet } from "react-router-dom";
 import forestBg from "../../assets/bgimage.png";

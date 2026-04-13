@@ -11,7 +11,7 @@ import {
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import logo from "../assets/logo.png";
-import "@/SideBar.css";
+import "./SideBar.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
