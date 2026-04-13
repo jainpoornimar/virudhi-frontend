@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./Login.css";
 import { FaEnvelope, FaLeaf } from "react-icons/fa";
 
 function ForgotPassword() {

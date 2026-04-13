@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "./Login.css";
 import { FaUser, FaLock, FaLeaf, FaEnvelope } from "react-icons/fa";
 import logo from "../assets/logo.png";
 

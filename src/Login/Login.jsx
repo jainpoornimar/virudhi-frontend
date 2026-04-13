@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import "./login.css";
+import "./Login.css";
 import { FaUser, FaLock, FaLeaf } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
