@@ -1,32 +1,33 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import MainLayout from "./layouts/MainLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./Admin/Components/AdminRoute";
+import MainLayout from "@/layouts/MainLayout";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import AdminRoute from "@/Admin/Components/AdminRoute";
 
 // USER
-import Login from "./Login/jsdghf";
-import Register from "./Login/Register";
-import ForgotPassword from "./Login/ForgotPassword";
+import Login from "@/Login/Login";
 
-import Home from "./pages/Home";
-import PlantDetail from "./pages/PlantDetail";
-import Dashboard from "./pages/Dashboard";
-import Favorites from "./pages/Favorites";
-import ExplorePage from "./pages/Explore";
-import Notes from "./pages/Notes";
-import AskNature from "./pages/AskNature";
-import RemediesPage from "./pages/Remedies";
-import RemedyDetail from "./pages/RemedyDetail";
+import Register from "@/Login/Register";
+import ForgotPassword from "@/Login/ForgotPassword";
+
+import Home from "@/pages/Home";
+import PlantDetail from "@/pages/PlantDetail";
+import Dashboard from "@/pages/Dashboard";
+import Favorites from "@/pages/Favorites";
+import ExplorePage from "@/pages/Explore";
+import Notes from "@/pages/Notes";
+import AskNature from "@/pages/AskNature";
+import RemediesPage from "@/pages/Remedies";
+import RemedyDetail from "@/pages/RemedyDetail";
 
 // ADMIN
-import AdminLogin from "./Admin/Layout/AdminLogin";
-import AdminLayout from "./Admin/Layout/AdminLayout";
-import AdminDashboard from "./Admin/Pages/Admindashboard";
-import Actions from "./Admin/Pages/Action";
-import AdminDiseases  from "./Admin/Pages/AdminDisease";
-import AllDiseases from "./Admin/Pages/AllDisease";
-import AllPlants from "./Admin/Pages/AllPlants";
+import AdminLogin from "@/Admin/Layout/AdminLogin";
+import AdminLayout from "@/Admin/Layout/AdminLayout";
+import AdminDashboard from "@/Admin/Pages/Admindashboard";
+import Actions from "@/Admin/Pages/Action";
+import AdminDiseases  from "@/Admin/Pages/AdminDisease";
+import AllDiseases from "@/Admin/Pages/AllDisease";
+import AllPlants from "@/Admin/Pages/AllPlants";
 
 
 
