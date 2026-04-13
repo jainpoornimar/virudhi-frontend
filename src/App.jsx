@@ -5,7 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./Admin/Components/AdminRoute";
 
 // USER
-import Login from "./Login/login";
+import Login from "./Login/Login";
 import Register from "./Login/Register";
 import ForgotPassword from "./Login/ForgotPassword";
 
