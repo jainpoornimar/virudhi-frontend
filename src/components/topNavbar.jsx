@@ -1,5 +1,5 @@
 import { FiBell, FiSun, FiSearch } from "react-icons/fi";
-import "./Topnavbar.css";
+import "./TopNavbar.css";
 
 const TopNavbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
