@@ -74,7 +74,7 @@ const RemediesPage = () => {
           </p>
           <button
             onClick={() => setShowAll(!showAll)}
-            className="text-sm text-green-700 underline"
+            className="text-md text-white border border-green-300 px-4 py-2 rounded-lg hover:bg-green-300 hover:text-black transition"
           >
             {showAll ? "Show Less" : "View All"}
           </button>

@@ -43,6 +43,24 @@ const FlipCard = ({ data }) => {
       : `/app/plant/${item.itemId || item.id}`;
   };
 
+  const getPreviewRemedies = (item) => {
+    if (Array.isArray(item.remedies) && item.remedies.length > 0) {
+      return item.remedies.slice(0, 3).map((r) =>
+        typeof r === "string"
+          ? r
+          : r?.title || r?.name || r?.remedy || r?.description || "Remedy"
+      );
+    }
+
+    if (Array.isArray(item.helps) && item.helps.length > 0) {
+      return item.helps.slice(0, 3).map((h) =>
+        h?.remedy || h?.problem || h?.title || "Remedy"
+      );
+    }
+
+    return [];
+  };
+
   useEffect(() => {
     const checkFavoriteStatus = async () => {
       try {
@@ -93,6 +111,8 @@ const FlipCard = ({ data }) => {
     }
   };
 
+  const remedies = getPreviewRemedies(data);
+
   return (
     <div
       className="w-full h-[220px] perspective cursor-pointer"
@@ -103,58 +123,83 @@ const FlipCard = ({ data }) => {
           flipped ? "rotate-y-180" : ""
         }`}
       >
-        <div className="absolute inset-0 [backface-visibility:hidden] rounded-2xl overflow-hidden shadow-lg">
+        {/* FRONT */}
+        <div className="absolute inset-0 [backface-visibility:hidden] rounded-2xl overflow-hidden shadow-md">
           <div
-            className="relative w-full h-full bg-cover bg-center"
+            className="relative w-full h-full bg-cover bg-center p-3 flex flex-col"
             style={{ backgroundImage: `url(${cardBg})` }}
           >
-            <img
-              src={getImage(data)}
-              alt={data.name}
-              className="w-full h-[110px] object-cover"
-              onError={(e) => {
-                e.currentTarget.src = DEFAULT_IMG;
-              }}
-            />
-
             <button
               onClick={handleLike}
               disabled={loadingFav}
-              className="absolute top-2 right-2 bg-black/40 hover:bg-black/60 p-2 rounded-full transition"
+              className="absolute top-2 right-2 bg-black/40 hover:bg-black/60 p-2 rounded-full transition z-10"
             >
               <FiHeart
-                className={`text-lg ${
+                className={`text-md ${
                   liked ? "text-red-500 fill-red-500" : "text-white"
                 } ${loadingFav ? "opacity-70" : ""}`}
               />
             </button>
 
-            <div className="p-3 text-white">
-              <h3 className="font-bold text-base line-clamp-1">{data.name}</h3>
-              <p className="text-xs opacity-90 line-clamp-3 mt-1">
+            <div className="w-full flex justify-center mt-2">
+              <img
+                src={getImage(data)}
+                alt={data.name}
+                className="w-[78%] h-[78px] object-cover rounded-md border border-white/20 shadow-md"
+                onError={(e) => {
+                  e.currentTarget.src = DEFAULT_IMG;
+                }}
+              />
+            </div>
+
+            <div className="mt-3 text-white px-1">
+              <h3 className="font-bold text-base line-clamp-1 text-center">
+                {data.name}
+              </h3>
+              <p className="text-md opacity-90 line-clamp-4 mt-1">
                 {data.description || "No description available"}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="absolute inset-0 [backface-visibility:hidden] rotate-y-180 rounded-2xl overflow-hidden shadow-lg bg-green-900 text-white p-4 flex flex-col justify-between">
-          <div>
-            <h3 className="font-bold text-lg mb-2">{data.name}</h3>
-            <p className="text-sm line-clamp-5 opacity-90">
-              {data.description || "No description available"}
+        {/* BACK */}
+        <div className="absolute inset-0 [backface-visibility:hidden] rotate-y-180 rounded-2xl overflow-hidden shadow-md">
+          <div
+            className="w-full h-full bg-cover bg-center text-white p-4 flex flex-col justify-between"
+            style={{ backgroundImage: `url(${cardBg})` }}
+          >
+            <div>
+              <h3 className="font-bold text-base mb-2 line-clamp-1">{data.name}</h3>
+
+              {remedies.length > 0 ? (
+                <div>
+                  <p className="text-md font-semibold mb-2">Few Remedies</p>
+                  <div className="space-y-1">
+                    {remedies.map((remedy, index) => (
+                      <p key={index} className="text-md opacity-95 line-clamp-1">
+                        • {remedy}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-md opacity-90 line-clamp-5">
+                  {data.description || "No remedies available"}
+                </p>
+              )}
+            </div>
+
+            <p
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(getDetailsRoute(data));
+              }}
+              className="mt-4 text-md font-semibold underline underline-offset-2 cursor-pointer hover:text-green-100"
+            >
+              View more details
             </p>
           </div>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate(getDetailsRoute(data));
-            }}
-            className="mt-4 bg-white text-green-900 font-semibold py-2 px-4 rounded-xl hover:bg-green-100 transition"
-          >
-            Explore Details
-          </button>
         </div>
       </div>
     </div>
